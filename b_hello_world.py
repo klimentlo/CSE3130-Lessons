@@ -138,7 +138,38 @@ class Text:
             self.__SURFACE = self.__FONT.render(self.__TEXT, 1, choice)
         self.__POS = (self.__X, self.__Y)
 
+    def WASDmove(self, KEYPRESSES):
+        '''
+        updates the position of the text using the keys wasd
+        :param KEYPRESSES: list
+        :return: none
+        '''
+        if KEYPRESSES[pygame.K_d] == 1:
+            self.__X += self.__SPD
+        if KEYPRESSES[pygame.K_a] == 1:
+            self.__X -= self.__SPD
+        if KEYPRESSES[pygame.K_w] == 1:
+            self.__Y -= self.__SPD
+        if KEYPRESSES[pygame.K_s] == 1:
+            self.__Y += self.__SPD
 
+        self.__POS= (self.__X, self.__Y)
+
+    def checkBoundaries(self, MAX_X, MAX_Y, MIN_X=0, MIN_Y=0):
+        '''
+        checking whether the object is going beyond an area
+        :param MAX_X: int
+        :param MAX_Y: int
+        :param MIN_X: int
+        :param MIN_Y: int
+        :return: none
+        '''
+        if self.__X > MAX_X - self.getWidth():
+            self.__X = MAX_X - self.getWidth()
+        if self.__X < MIN_X:
+            self.__X = MIN_X
+
+        self.__POS = (self.__X, self.__Y)
 
     # ACCESSOR METHODS
     def getSurface(self):
@@ -170,10 +201,13 @@ if __name__ == "__main__":
                 exit()
 
 
-        TEXT.bounceX(WINDOW.getWidth())
-        TEXT.bounceY(WINDOW.getHeight())
+        #TEXT.bounceX(WINDOW.getWidth())
+        #TEXT.bounceY(WINDOW.getHeight())
+        PRESSED_KEYS = pygame.key.get_pressed()
         TEXT.setSpeed(5)
-        WINDOW.clearScreen() # clear screen must be before getsurface
+        TEXT.WASDmove(PRESSED_KEYS)
+        TEXT.checkBoundaries(TEXT.getWidth(), TEXT.getHeight()) # the text is stuck to the damn wall 
+        WINDOW.clearScreen() # clear screen must be before get surface
         WINDOW.getSurface().blit(TEXT.getSurface(), TEXT.getPOS())
         # TEXT2.marqueeX(WINDOW.getWidth())
         # TEXT2.setSpeed(100)
