@@ -169,6 +169,11 @@ class Text:
         if self.__X < MIN_X:
             self.__X = MIN_X
 
+        if self.__Y > MAX_Y - self.getHeight():
+            self.__Y = MAX_Y - self.getHeight()
+        if self.__Y < MIN_Y:
+            self.__Y = MIN_Y
+
         self.__POS = (self.__X, self.__Y)
 
     # ACCESSOR METHODS
@@ -206,7 +211,7 @@ if __name__ == "__main__":
         PRESSED_KEYS = pygame.key.get_pressed()
         TEXT.setSpeed(5)
         TEXT.WASDmove(PRESSED_KEYS)
-        TEXT.checkBoundaries(TEXT.getWidth(), TEXT.getHeight()) # the text is stuck to the damn wall 
+        TEXT.checkBoundaries(WINDOW.getWidth(), WINDOW.getHeight()) # the text is stuck to the damn wall
         WINDOW.clearScreen() # clear screen must be before get surface
         WINDOW.getSurface().blit(TEXT.getSurface(), TEXT.getPOS())
         # TEXT2.marqueeX(WINDOW.getWidth())
