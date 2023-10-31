@@ -25,6 +25,7 @@ class MySprite:
         self.__DIR_Y = 1
 
 
+
     # MODIFIER
     def setX(self, X):
         self.__X = X
@@ -34,11 +35,53 @@ class MySprite:
         self.__Y = Y
         self.__POS = (self.__X, self.__Y)
 
+    def setSpeed(self, SPEED):
+        self.__SPD = SPEED
+
     def setPOS(self, X, Y):
         self.setX(X)
-        self._setY(Y)
+        self.setY(Y)
 
+    def marqueeX(self, MAX_X, MIN_X=0):
+        self.__X += self.__SPD
 
+        if self.__X > MAX_X:
+            self.__X = MIN_X - self.getWidth()
+
+        self.__POS = (self.__X, self.__Y)
+
+    def WASDmove(self, KEYPRESSES):
+        '''
+        updates the position of the text using the keys wasd
+        :param KEYPRESSES: list
+        :return: none
+        '''
+        if KEYPRESSES[pygame.K_d] == 1:
+            self.__X += self.__SPD
+        if KEYPRESSES[pygame.K_a] == 1:
+            self.__X -= self.__SPD
+        if KEYPRESSES[pygame.K_w] == 1:
+            self.__Y -= self.__SPD
+        if KEYPRESSES[pygame.K_s] == 1:
+            self.__Y += self.__SPD
+
+        self.__POS = (self.__X, self.__Y)
+
+    def checkBoundaries(self, MAX_X, MAX_Y, MIN_X=0, MIN_Y=0):
+
+        if self.__X > MAX_X - self.getWidth():
+            self.__X = MAX_X - self.getWidth()
+
+        if self.__X < MIN_X:
+            self.__X = MIN_X
+
+        if self.__Y > MAX_Y - self.getHeight():
+            self.__Y = MAX_Y - self.getHeight()
+
+        if self.__Y < MIN_Y:
+            self.__Y = MIN_Y
+
+        self.__POS = (self.__X, self.__Y)
 
     # ACCESSOR
     def getPOS(self):
