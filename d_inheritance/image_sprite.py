@@ -26,7 +26,7 @@ class ImageSprite(MySprite):
         if SCALE_Y == 0:
             SCALE_Y = SCALE_X
 
-        self.__SURFACE = pygame.transform.scale(self._SURFACE, (self.getWidth() * SCALE_X, self.getHeight() * SCALE_Y))
+        self._SURFACE = pygame.transform.scale(self._SURFACE, (self.getWidth() * SCALE_X, self.getHeight() * SCALE_Y))
 
     def setImageDirX(self, BOOL):
         '''
@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
     WINDOW = Window("Image Sprites", 800, 600, 30)
     GHOST = ImageSprite("media/ghost_sprite.png")
-    GHOST.setScale(5)
+    GHOST.setScale(50)
 
     PIKACHU = ImageSprite("media/pikachu.png")
     PIKACHU.setX(WINDOW.getWidth()//2 - PIKACHU.getWidth()//2)
