@@ -71,8 +71,6 @@ class MySprite:
             self.__DIR_Y = 1
         self.__POS = (self.__X, self.__Y)
 
-        self.__POS = (self.__X, self.__Y)
-
 
     def WASDmove(self, KEYPRESSES):
         '''
