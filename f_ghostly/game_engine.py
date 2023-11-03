@@ -20,6 +20,7 @@ if __name__ == "__main__":
     PIKACHU.setX(WINDOW.getWidth() // 2 - PIKACHU.getWidth() // 2)
     PIKACHU.setY(WINDOW.getHeight() // 2 - PIKACHU.getHeight() // 2)
     PIKACHU.setScale(1/4)
+    PIKACHU.setSpeed(10)
     PIKACHU.setImageDirX(False)
 
     while True:
@@ -40,7 +41,7 @@ if __name__ == "__main__":
         if PIKACHU.isCollision(GHOST.getWidth(), GHOST.getHeight(), GHOST.getPOS()):
             GHOST.setPOS(randrange(WINDOW.getWidth() - GHOST.getWidth()), randrange(WINDOW.getHeight() - GHOST.getHeight()))
 
-        WINDOW.clearScreen()
+        #WINDOW.clearScreen()
         WINDOW.getSurface().blit(GHOST.getSurface(), GHOST.getPOS())
         WINDOW.getSurface().blit(PIKACHU.getSurface(), PIKACHU.getPOS())
         WINDOW.updateFrame()
