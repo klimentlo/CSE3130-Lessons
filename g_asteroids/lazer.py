@@ -16,7 +16,7 @@ class Lazer(Box):
         self.__FIRED = False
 
     # MODIFIER METHODS
-    def setFire(self, BOOL):
+    def setFired(self, BOOL):
         '''
         determines if the lazer is currently fired
         :param BOOL: bool
@@ -27,7 +27,12 @@ class Lazer(Box):
     def setAngle(self, ANGLE):
         self.__ANGLE = ANGLE
 
+
+
     # ACCESSOR METHODS
+
+    def getFired(self):
+        return self.__FIRED
 
     def move(self):
         if self.__FIRED:

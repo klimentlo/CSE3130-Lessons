@@ -38,3 +38,6 @@ class Window:
 
     def getHeight(self):
         return self.__HEIGHT
+
+    def getFPS(self):
+        return self.__FPS
