@@ -19,7 +19,10 @@ class Player(MySprite):
         self._SURFACE = self.__PLAYER_SPRITE.getSurface()
         self.__HEALTH = 100
         self.__ANGLE = 0
-        self.__LAZERS = [Lazer(), Lazer(), Lazer(), Lazer(), Lazer()]
+        self.__LAZERS = []
+        for i in range(300):
+            self.__LAZERS.append(Lazer())
+
         self.__LAZER_COOLDOWN = False
         self.__LAZER_COOLDOWN_TIMER = 0
 
@@ -82,7 +85,7 @@ class Player(MySprite):
         '''
         if self.__LAZER_COOLDOWN:
             self.__LAZER_COOLDOWN_TIMER += 1
-            if self.__LAZER_COOLDOWN_TIMER > FPS//3:
+            if self.__LAZER_COOLDOWN_TIMER > FPS//10000:
                 self.__LAZER_COOLDOWN = False
                 self.__LAZER_COOLDOWN_TIMER = 0
 
@@ -97,6 +100,8 @@ class Player(MySprite):
     def getLazerPOS(self, INDEX):
         return self.__LAZERS[INDEX].getPOS()
 
+    def getHealth(self):
+        return self.__HEALTH
 
 
 if __name__ == "__main__":
