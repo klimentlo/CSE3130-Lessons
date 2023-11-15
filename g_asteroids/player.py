@@ -85,9 +85,12 @@ class Player(MySprite):
         '''
         if self.__LAZER_COOLDOWN:
             self.__LAZER_COOLDOWN_TIMER += 1
-            if self.__LAZER_COOLDOWN_TIMER > FPS//10000:
+            if self.__LAZER_COOLDOWN_TIMER > FPS//900000000000000000000000000000000000000000000000000000000:
                 self.__LAZER_COOLDOWN = False
                 self.__LAZER_COOLDOWN_TIMER = 0
+
+    def takeDamage(self, DAMAGE):
+        self.__HEALTH -= DAMAGE
 
 
     # ACCESSOR METHODS

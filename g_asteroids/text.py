@@ -20,7 +20,7 @@ class Text(MySprite):
 
     def setText(self, TEXT):
         self.__TEXT = TEXT
-        self.__SURFACE = self.__FONT.render(self.__TEXt, True, self.__COLOR)
+        self._SURFACE = self.__FONT.render(self.__TEXT, True, self._COLOR)
 
 if __name__ == "__main__":
     from window import Window
