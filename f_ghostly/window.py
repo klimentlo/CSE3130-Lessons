@@ -1,16 +1,19 @@
-# window.py in f_ghostly (folder)
+# window.py in f_ghostly
+
 '''
-title: Window class for pygame
-author: kliment lo
+title: Window Class for pygame
+author: Mike Zhang
 date-created: 2023-10-30
 '''
 
 import pygame
 from color import Color
+
+
 class Window:
-    '''
-    creates the window that will load pygame
-    '''
+    """
+    Create the window that will load pygame
+    """
 
     def __init__(self, TITLE, WIDTH, HEIGHT, FPS):
         self.__TITLE = TITLE
@@ -20,7 +23,7 @@ class Window:
         self.__SCREEN_DIMENSIONS = (self.__WIDTH, self.__HEIGHT)
         self.__CLOCK = pygame.time.Clock()
         self.__SURFACE = pygame.display.set_mode(self.__SCREEN_DIMENSIONS)
-        self.__SURFACE.fill(Color.GREY) # pulls the color from color class
+        self.__SURFACE.fill(Color.GREY)
         pygame.display.set_caption(self.__TITLE)
 
     def clearScreen(self):
